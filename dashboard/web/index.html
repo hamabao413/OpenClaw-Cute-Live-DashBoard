@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live Dashboard</title>
+  <link rel="stylesheet" href="/web/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="title">Live Dashboard</div>
+    </div>
+
+    <div class="statusline">
+      <div class="pill" id="pill-state">STATE</div>
+      <div class="kv"><span class="k">Since</span><span class="v" id="since">-</span></div>
+      <div class="kv"><span class="k">Queue</span><span class="v" id="queue">0</span></div>
+      <div class="kv"><span class="k">Wait</span><span class="v" id="wait">0ms</span></div>
+      <div class="kv"><span class="k">TTFT</span><span class="v" id="ttft">-</span></div>
+      <div class="kv"><span class="k">TPS</span><span class="v" id="tps">-</span></div>
+    </div>
+
+    <button class="btn" id="btn-settings">Settings</button>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <canvas id="canvas" width="980" height="520"></canvas>
+      <div class="hint">
+        提示：此面板以 <b>OpenClaw log</b> 驅動狀態機；若未設定 log 路徑，右上角 Settings 可指定檔案或資料夾。
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="card">
+        <div class="card-title">事件</div>
+        <div class="events" id="events"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">目前讀取的 log</div>
+        <div class="mono small" id="logfile">-</div>
+        <div class="card-title mt">最後一行</div>
+        <div class="mono small" id="lastline">-</div>
+      </div>
+    </aside>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-panel">
+      <div class="modal-title">設定</div>
+
+      <label class="lbl">OpenClaw log 路徑（檔案或資料夾）</label>
+      <input class="inp" id="log_path" placeholder='例如：C:\Users\symba\.openclaw\logs 或 C:\Users\symba\.openclaw\xxx.log' />
+
+      <div class="grid2">
+        <div>
+          <label class="lbl">Host</label>
+          <input class="inp" id="host" />
+        </div>
+        <div>
+          <label class="lbl">Port</label>
+          <input class="inp" id="port" />
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <label class="lbl">Poll Interval (ms)</label>
+          <input class="inp" id="poll_interval_ms" />
+        </div>
+        <div>
+          <label class="lbl">Idle After (sec)</label>
+          <input class="inp" id="idle_after_sec" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="btn-cancel">取消</button>
+        <button class="btn primary" id="btn-save">儲存</button>
+      </div>
+
+      <div class="note">
+        儲存後會寫入 <span class="mono">config.json</span>。若你改了 Host/Port，請重啟 <span class="mono">run_dashboard.bat</span>。
+      </div>
+    </div>
+  </div>
+
+  <script src="/web/app.js"></script>
+</body>
+</html>
