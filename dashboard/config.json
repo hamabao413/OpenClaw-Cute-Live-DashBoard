@@ -1,8 +1,9 @@
 {
   "host": "127.0.0.1",
   "port": 8787,
-  "log_path": "C:\\Users\\symba\\.openclaw\\agents\\main\\sessions",
+  "log_path": "C:\\Users\\name\\.openclaw\\agents\\main\\sessions",
   "poll_interval_ms": 250,
   "idle_after_sec": 60,
-  "identity_path": "C:\\Users\\symba\\.openclaw\\workspace\\IDENTITY.md"
+  "identity_path": "C:\\Users\\name\\.openclaw\\workspace\\IDENTITY.md"
+
 }
